@@ -12,9 +12,9 @@ void SoundSensor::ReadPin(const bool logToSerial) {
 
     int avg = runningAvg / HISTORY_LEN;
 
-    if (avg >  85) {
+    if (avg >  120) {
       isHigh = true;
-    } else if (avg < 30) {
+    } else if (avg < 100) {
       isHigh = false;
     }
 
@@ -25,4 +25,8 @@ void SoundSensor::ReadPin(const bool logToSerial) {
 
 void SoundSensor::Setup() {
     pinMode(soundPin, INPUT);
+}
+
+bool SoundSensor::IsHigh() {
+  return isHigh;
 }

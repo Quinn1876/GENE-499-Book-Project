@@ -1,15 +1,26 @@
 #pragma once
 
 class L298N {
-    const int enablePin;
-    const int forwardPin;
-    const int reversePin;
 public:
     enum Direction {
         Forward,
         Reverse,
     };
+private:
+    const int enablePin;
+    const int forwardPin;
+    const int reversePin;
+
+    int currentSpeed;
+    Direction currentDirection;
+public:
     L298N(int enable, int forward, int reverse) : enablePin(enable), forwardPin(forward), reversePin(reverse) {}
+
+    void Setup() {
+        pinMode(enablePin, OUTPUT);
+        pinMode(forwardPin, OUTPUT);
+        pinMode(reversePin, OUTPUT);
+    }
 
     void SetDirection(Direction dir) {
         digitalWrite(forwardPin, LOW);
@@ -32,5 +43,9 @@ public:
 
         int writeVal = map(speed, 0, 100, 0, 255);
         analogWrite(enablePin, writeVal);
+        currentSpeed = speed;
     }
+
+    int GetSpeed() const { return currentSpeed; }
+    Direction GetDirection() const { return currentDirection; }
 };

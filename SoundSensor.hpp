@@ -1,6 +1,6 @@
 #pragma once
 #include "Arduino.h"
-#define HISTORY_LEN 2
+#define HISTORY_LEN 4
 
 class SoundSensor {
     const int soundPin;
@@ -12,6 +12,8 @@ public:
     SoundSensor(const int &soundPin)
         : soundPin(soundPin) {}
 
-    void ReadPin(const bool logToSerial);
+    void ReadPin(const bool logToSerial = false);
     void Setup();
+
+    bool IsHigh();
 };
