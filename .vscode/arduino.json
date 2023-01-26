@@ -1,4 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "Sound_Filtering.ino"
+    "sketch": "Sound_Filtering.ino",
+    "port": "/dev/ttyACM0"
 }

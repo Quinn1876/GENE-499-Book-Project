@@ -1,5 +1,6 @@
+#pragma once
 #include "Arduino.h"
-#define HISTORY_LEN 5
+#define HISTORY_LEN 2
 
 class SoundSensor {
     const int soundPin;
